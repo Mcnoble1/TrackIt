@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  TrackIt-contracts-validate:
+    name: Run TrackIt-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/TrackIt-contracts-ci.yaml
+
+  TrackIt-contracts-release:
+    name: Run TrackIt-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/TrackIt-contracts-cd.yaml
+    needs: TrackIt-contracts-validate
+
+  TrackIt-frontend-validate:
+    name: Run TrackIt-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/TrackIt-frontend-ci.yaml
+
+  TrackIt-frontend-release:
+    name: Run TrackIt-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/TrackIt-frontend-cd.yaml
+    needs: TrackIt-frontend-validate

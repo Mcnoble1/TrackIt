@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  TrackIt-contracts-ci:
+    name: Run TrackIt-contracts validation
+    uses: ./.github/workflows/TrackIt-contracts-ci.yaml
+
+  TrackIt-frontend-ci:
+    name: Run TrackIt-frontend validation
+    uses: ./.github/workflows/TrackIt-frontend-ci.yaml
+

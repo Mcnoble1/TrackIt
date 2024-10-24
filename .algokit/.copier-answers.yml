@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 2.0.12
+_src_path: gh:algorandfoundation/algokit-fullstack-template
+author_email: idowufestustemiloluwa@gmail.com
+author_name: mcnoble1
+cloud_provider: netlify
+contract_name: TrackIt
+preset_name: production
+project_name: TrackIt
+
