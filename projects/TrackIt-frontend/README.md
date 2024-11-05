@@ -1,8 +1,9 @@
-# Supply Chain Track - Blockchain-Based Product Authentication
-
+# TrackIt 
 A decentralized supply chain management system built on Algorand blockchain for product authentication and tracking in Nigerian markets.
 
 ## Technical Overview
+Products are tokenized as Algorand Standard Assets (ASA) in the chain and every action and movement of goods is tracked onchain. Movements of products is tracked as product ownership transfer in the chain.
+Consumers/Users can verify authenticity of products by just scanning products QRcodes.
 
 ### Core Technologies
 
@@ -39,7 +40,7 @@ The application follows a modular architecture with:
 1. Clone the repository:
 ```bash
 git clone [repository-url]
-cd supply-chain-track
+cd projects/TrackIt-frontend
 ```
 
 2. Install dependencies:
