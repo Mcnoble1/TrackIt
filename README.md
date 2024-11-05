@@ -40,7 +40,7 @@ The application follows a modular architecture with:
 
  Clone the repository:
 ```bash
-git clone [[repository-url]](https://github.com/Mcnoble1/TrackIt.git)
+git clone https://github.com/Mcnoble1/TrackIt.git
 cd projects/TrackIt-contracts/contract
 ```
 
