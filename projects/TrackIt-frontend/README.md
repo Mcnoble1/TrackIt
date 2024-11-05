@@ -1,124 +1,156 @@
-# TrackIt-frontend
+# Supply Chain Track - Blockchain-Based Product Authentication
 
-This starter React project has been generated using AlgoKit. See below for default getting started instructions.
+A decentralized supply chain management system built on Algorand blockchain for product authentication and tracking in Nigerian markets.
 
-# Setup
+## Technical Overview
 
-### Initial Setup
+### Core Technologies
 
-#### 1. Clone the Repository
-Start by cloning this repository to your local machine.
+- **Frontend**: React 18 with TypeScript
+- **Blockchain**: Algorand SDK
+- **Styling**: Tailwind CSS
+- **Wallet Integration**: Pera Wallet Connect
+- **QR Code**: html5-qrcode for scanning, qrcode.react for generation
+- **Build Tool**: Vite
+- **State Management**: React Context API
+- **Routing**: React Router v6
+- **Notifications**: React Hot Toast
 
-#### 2. Install Pre-requisites
-Ensure the following pre-requisites are installed and properly configured:
+### Architecture
 
-- **npm**: Node package manager. Install from [Node.js Installation Guide](https://nodejs.org/en/download/). Verify with `npm -v` to see version `18.12`+.
-- **AlgoKit CLI**: Essential for project setup and operations. Install the latest version from [AlgoKit CLI Installation Guide](https://github.com/algorandfoundation/algokit-cli#install). Verify installation with `algokit --version`, expecting `2.0.0` or later.
+The application follows a modular architecture with:
 
-#### 3. Bootstrap Your Local Environment
-Run the following commands within the project folder:
+- Context-based wallet management
+- Component-based UI design
+- Smart contract integration for blockchain operations
+- Real-time product tracking and verification
+- QR code-based product authentication
 
-- **Install Project Dependencies**: With `algokit project bootstrap all`, ensure all dependencies are ready.
+## Getting Started
 
-### Development Workflow
+### Prerequisites
 
-#### Terminal
-Directly manage and interact with your project using AlgoKit commands:
+- Node.js 16+ and npm
+- An Algorand wallet (Pera Wallet recommended)
+- TestNet Algos for testing (get from [Algorand TestNet Dispenser](https://bank.testnet.algorand.network/))
 
-1. **Build Contracts**: `algokit project run build` builds react web app and links with smart contracts in workspace, if any.
-2. Remaining set of command for linting, testing and deployment can be found in respective [package.json](./package.json) file and [.algokit.toml](./.algokit.toml) files.
+### Installation
 
-#### VS Code
-For a seamless experience with breakpoint debugging and other features:
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd supply-chain-track
+```
 
-1. **Open Project**: In VS Code, open the repository root.
-2. **Install Extensions**: Follow prompts to install recommended extensions.
-3. **Debugging**:
-   - Use `F5` to start debugging.
-   - **Windows Users**: Select the Python interpreter at `./.venv/Scripts/python.exe` via `Ctrl/Cmd + Shift + P` > `Python: Select Interpreter` before the first run.
+2. Install dependencies:
+```bash
+npm install
+```
 
-#### Other IDEs
-While primarily optimized for VS Code, Jetbrains WebStorm has base support for this project:
+3. Start the development server:
+```bash
+npm run dev
+```
 
-1. **Open Project**: In your JetBrains IDE, open the repository root.
-2. **Automatic Setup**: The IDE should configure the Python interpreter and virtual environment.
-3. **Debugging**: Use `Shift+F10` or `Ctrl+R` to start debugging. Note: Windows users may encounter issues with pre-launch tasks due to a known bug. See [JetBrains forums](https://youtrack.jetbrains.com/issue/IDEA-277486/Shell-script-configuration-cannot-run-as-before-launch-task) for workarounds.
+4. Open your browser and navigate to `http://localhost:5173`
 
-## AlgoKit Workspaces and Project Management
-This project supports both standalone and monorepo setups through AlgoKit workspaces. Leverage [`algokit project run`](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md) commands for efficient monorepo project orchestration and management across multiple projects within a workspace.
+### Algorand Integration
 
-> Please note, by default frontend is pre configured to run against Algorand LocalNet. If you want to run against TestNet or MainNet, comment out the current environment variable and uncomment the relevant one in [`.env`](.env) file that is created after running bootstrap command and based on [`.env.template`](.env.template).
+The project uses Algorand's TestNet for all blockchain operations. Key integrations:
 
-### Continuous Integration
+1. **Wallet Connection**:
+   - Connect using Pera Wallet
+   - View wallet balance and address
+   - Sign transactions for product operations
 
-This project uses [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) to define CI workflows, which are located in the [.github/workflows](`../../.github/workflows`) folder.
+2. **Smart Contract Operations**:
+   - Product registration
+   - Ownership transfer
+   - Location updates
+   - Authentication verification
 
-For pull requests and pushes to `main` branch against this repository the following checks are automatically performed by GitHub Actions:
+## Key Features and Achievements
 
-- `install`: Installs dependencies using `npm`
-- `lint`: Lints the codebase using `ESLint`
-- `build`: Builds the codebase using `vite`
+### 1. Smart Contract Implementation
 
-> Please note, if you instantiated the project via `algokit init` without explicitly specifying the `--no-workspace` flag, we will automatically attempt to move the contents of the `.github` folder to the root of the workspace.
+- **Product Registration**: Create unique product identifiers on the blockchain
+- **Ownership Management**: Transfer and track product ownership
+- **Location Tracking**: Record and verify product movement
+- **Authentication System**: Verify product authenticity
 
-### Continuous Deployment
+### 2. User Interface
 
-The project template provides base Github Actions workflows for continuous deployment to [Netlify](https://www.netlify.com/) or [Vercel](https://vercel.com/). These workflows are located in the [`.github/workflows`](./.github/workflows) folder.
+- **Dashboard**: Real-time overview of supply chain operations
+- **Product Management**: Create, track, and transfer products
+- **QR Code Integration**: Generate and scan product verification codes
+- **Responsive Design**: Mobile-friendly interface
 
-**Please note**: when configuring the github repository for the first time. Depending on selected provider you will need to set the provider secrets in the repository settings. Default setup provided by the template allows you to manage the secrets via environment variables and secrets on your github repository.
+### 3. Security Features
 
+- **Blockchain Verification**: Every product has a unique blockchain footprint
+- **QR Code Authentication**: Quick and secure product verification
+- **Wallet Integration**: Secure transaction signing
+- **Role-Based Access**: Different interfaces for suppliers and customers
 
-#### Setting up environment variables and secrets for webapp deployment
+### 4. Supply Chain Features
 
-For Vercel:
-1. Retrieve your [Vercel Access Token](https://vercel.com/support/articles/how-do-i-use-a-vercel-api-access-token)
-2. Install the [Vercel CLI](https://vercel.com/cli) and run `vercel login`
-3. Inside your folder, run `vercel link` to create a new Vercel project
-4. Inside the generated `.vercel` folder, save the `projectId` and `orgId` from the `project.json`
-5. Inside GitHub, add `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` as [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
-6. Create an .env file containing ENV vars for the project (pointing to testnet or mainnet), drag and drop the .env file to upload initial batch of default environment variables to your vercel project.
-7. Upon invocation, CD pipeline will pull the VITE_ prefixed environment variables, build the project and deploy to the specified environment.
+- **Real-time Tracking**: Monitor product location and status
+- **Temperature Monitoring**: Track storage conditions
+- **Batch Management**: Handle product batches
+- **History Tracking**: Complete product journey visualization
 
-For Netlify:
-1. Retrieve your [Netlify Access Token](https://docs.netlify.com/cli/get-started/#obtain-a-token-in-the-netlify-ui)
-2. Inside your folder run `netlify login`
-3. Inside your folder run `netlify sites:create` to create a new site, obtain NETLIFY_SITE_ID from the output
-4. Inside GitHub, add `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` as [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
-5. Define the VITE_ prefixed environment variables in netlify environment variables under site settings.
-6. Upon invocation, CD pipeline will build the project and deploy to the specified environment.
+## Project Structure
 
-> If you prefer alternative deployment methods, you can modify the relevant workflow files from the [`.github/workflows`](./.github/workflows) folder or modify deploy scripts in `.algokit.toml`.
+```
+src/
+├── components/          # Reusable UI components
+├── context/            # React context providers
+├── contracts/          # Algorand smart contract integration
+├── pages/              # Main application pages
+└── utils/             # Helper functions and utilities
+```
 
+## Technical Implementation Details
 
-# Algorand Wallet integrations
+### Smart Contract Integration
 
-The template comes with [`use-wallet`](https://github.com/txnlab/use-wallet) integration, which provides a React hook for connecting to an Algorand wallet providers. The following wallet providers are included by default:
-- LocalNet:
-- - [KMD/Local Wallet](https://github.com/TxnLab/use-wallet#kmd-algorand-key-management-daemon) - Algorand's Key Management Daemon (KMD) is a service that manages Algorand private keys and signs transactions. Works best with AlgoKit LocalNet and allows you to easily test and interact with your dApps locally.
-- TestNet and others:
-- - [Pera Wallet](https://perawallet.app).
-- - [Defly Wallet](https://defly.app).
-- - [Exodus Wallet](https://www.exodus.com).
-- - [Daffi Wallet](https://www.daffi.me).
+The `SupplyChainContract.ts` file contains the core blockchain logic:
 
-Refer to official [`use-wallet`](https://github.com/txnlab/use-wallet) documentation for detailed guidelines on how to integrate with other wallet providers (such as WalletConnect v2). Too see implementation details on the use wallet hook and initialization of extra wallet providers refer to [`App.tsx`](./src/App.tsx).
+- Product creation with unique identifiers
+- Ownership transfer mechanisms
+- Location and status updates
+- Authentication verification
 
-# Tools
+### Wallet Integration
 
-This project makes use of React and Tailwind to provider a base project configuration to develop frontends for your Algorand dApps and interactions with smart contracts. The following tools are in use:
+`WalletContext.tsx` manages:
 
-- [AlgoKit Utils](https://github.com/algorandfoundation/algokit-utils-ts) - Various TypeScript utilities to simplify interactions with Algorand and AlgoKit.
-- [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
-- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
-- [daisyUI](https://daisyui.com/) - A component library for Tailwind CSS.
-- [use-wallet](https://github.com/txnlab/use-wallet) - A React hook for connecting to an Algorand wallet providers.
-- [npm](https://www.npmjs.com/): Node.js package manager
-- [jest](https://jestjs.io/): JavaScript testing framework
-- [playwright](https://playwright.dev/): Browser automation library
-- [Prettier](https://prettier.io/): Opinionated code formatter
-- [ESLint](https://eslint.org/): Tool for identifying and reporting on patterns in JavaScript
-- Github Actions workflows for build validation
-It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [.vscode](./.vscode) folder.
-# Integrating with smart contracts and application clients
+- Wallet connection state
+- Transaction signing
+- Balance updates
+- Authentication status
 
-Refer to the detailed guidance on [integrating with smart contracts and application clients](./src/contracts/README.md). In essence, for any smart contract codebase generated with AlgoKit or other tools that produce compile contracts into ARC34 compliant app specifications, you can use the `algokit generate` command to generate TypeScript or Python typed client. Once generated simply drag and drop the generated client into `./src/contracts` and import it into your React components as you see fit.
+### Product Verification
+
+The verification system includes:
+
+- QR code generation for products
+- Scanner implementation for verification
+- Blockchain-based authenticity checks
+- Complete product history retrieval
+
+## Future Enhancements
+
+1. **Multi-Wallet Support**: Integration with additional Algorand wallets
+2. **Batch Operations**: Bulk product management
+3. **Advanced Analytics**: Supply chain insights and reporting
+4. **Mobile App**: Native mobile application development
+5. **IoT Integration**: Real-time sensor data integration
+
+## Contributing
+
+Contributions are welcome! Please read our contributing guidelines and submit pull requests to our repository.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

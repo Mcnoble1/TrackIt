@@ -1,57 +1,42 @@
-import { DeflyWalletConnect } from '@blockshake/defly-connect'
-import { DaffiWalletConnect } from '@daffiwallet/connect'
-import { PeraWalletConnect } from '@perawallet/connect'
-import { PROVIDER_ID, ProvidersArray, WalletProvider, useInitializeProviders } from '@txnlab/use-wallet'
-import algosdk from 'algosdk'
-import { SnackbarProvider } from 'notistack'
-import Home from './Home'
-import { getAlgodConfigFromViteEnvironment, getKmdConfigFromViteEnvironment } from './utils/network/getAlgoClientConfigs'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import ProductTracking from './pages/ProductTracking';
+import CreateProduct from './pages/CreateProduct';
+import TransferOwnership from './pages/TransferOwnership';
+import Dashboard from './pages/Dashboard';
+import SupplierDashboard from './pages/SupplierDashboard';
+import VerifyProduct from './pages/VerifyProduct';
+import { WalletProvider } from './context/WalletContext';
+import { Toaster } from 'react-hot-toast';
 
-let providersArray: ProvidersArray
-if (import.meta.env.VITE_ALGOD_NETWORK === '') {
-  const kmdConfig = getKmdConfigFromViteEnvironment()
-  providersArray = [
-    {
-      id: PROVIDER_ID.KMD,
-      clientOptions: {
-        wallet: kmdConfig.wallet,
-        password: kmdConfig.password,
-        host: kmdConfig.server,
-        token: String(kmdConfig.token),
-        port: String(kmdConfig.port),
-      },
-    },
-  ]
-} else {
-  providersArray = [
-    { id: PROVIDER_ID.DEFLY, clientStatic: DeflyWalletConnect },
-    { id: PROVIDER_ID.PERA, clientStatic: PeraWalletConnect },
-    { id: PROVIDER_ID.DAFFI, clientStatic: DaffiWalletConnect },
-    { id: PROVIDER_ID.EXODUS },
-    // If you are interested in WalletConnect v2 provider
-    // refer to https://github.com/TxnLab/use-wallet for detailed integration instructions
-  ]
-}
-
-export default function App() {
-  const algodConfig = getAlgodConfigFromViteEnvironment()
-
-  const walletProviders = useInitializeProviders({
-    providers: providersArray,
-    nodeConfig: {
-      network: algodConfig.network,
-      nodeServer: algodConfig.server,
-      nodePort: String(algodConfig.port),
-      nodeToken: String(algodConfig.token),
-    },
-    algosdkStatic: algosdk,
-  })
-
+function App() {
   return (
-    <SnackbarProvider maxSnack={3}>
-      <WalletProvider value={walletProviders}>
-        <Home />
-      </WalletProvider>
-    </SnackbarProvider>
-  )
+    <WalletProvider>
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-grow">
+            <div className="container mx-auto px-4 py-8">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/track" element={<ProductTracking />} />
+                <Route path="/create" element={<CreateProduct />} />
+                <Route path="/transfer" element={<TransferOwnership />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/supplier" element={<SupplierDashboard />} />
+                <Route path="/verify" element={<VerifyProduct />} />
+              </Routes>
+            </div>
+          </main>
+          <Footer />
+          <Toaster position="top-right" />
+        </div>
+      </Router>
+    </WalletProvider>
+  );
 }
+
+export default App;

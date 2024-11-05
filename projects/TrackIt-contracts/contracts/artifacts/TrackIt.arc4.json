@@ -1,0 +1,206 @@
+{
+  "name": "TrackIt",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [
+        {
+          "name": "productId",
+          "type": "uint64"
+        },
+        {
+          "name": "productName",
+          "type": "string"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "mint",
+      "args": [],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "createProduct",
+      "args": [
+        {
+          "name": "sender",
+          "type": "string"
+        },
+        {
+          "name": "productId",
+          "type": "uint64"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "origin",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "name": "manufacturer",
+          "type": "string"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint64"
+        },
+        {
+          "name": "expiryDate",
+          "type": "uint64"
+        },
+        {
+          "name": "batchNumber",
+          "type": "string"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "getRegisteredProduct",
+      "args": [],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "register",
+      "args": [
+        {
+          "name": "registeredProduct",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "setProductId",
+      "args": [
+        {
+          "name": "productId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "optInToAsset",
+      "args": [
+        {
+          "name": "mbrTxn",
+          "type": "pay"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "updateProductLocation",
+      "args": [
+        {
+          "name": "sender",
+          "type": "string"
+        },
+        {
+          "name": "productId",
+          "type": "uint64"
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "transferOwnership",
+      "args": [
+        {
+          "name": "sender",
+          "type": "string"
+        },
+        {
+          "name": "receiver",
+          "type": "string"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "getProductId",
+      "args": [],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "getProductLocation",
+      "args": [
+        {
+          "name": "productId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "getProductHistory",
+      "args": [
+        {
+          "name": "productId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "verifyProductAuthenticity",
+      "args": [
+        {
+          "name": "productId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "deleteApplication",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    }
+  ]
+}
