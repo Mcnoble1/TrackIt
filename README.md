@@ -49,17 +49,18 @@ cd projects/TrackIt-contracts/contract
 npm run build 
 ```
 
+In another terminal
 
 ```bash
 cd projects/TrackIt-frontend
 ```
 
-2. Install dependencies:
+Install dependencies:
 ```bash
 npm install
 ```
 
-3. Start the development server:
+Start the development server:
 ```bash
 npm run dev
 ```
